@@ -1,28 +1,43 @@
-Introduction
+# LAB Project: Arithmetic Parser
 
-The ArithmeticParser is a Python class designed to tokenize and validate arithmetic expressions provided by users. This report provides a detailed analysis of the code's functionality and implementation.
+Python lab work focused on tokenizing and validating arithmetic expressions. Includes milestone scripts and a Colab notebook.
 
-Overview of the Code
+## What it does
 
-The code consists of a single class named ArithmeticParser, containing methods for various operations including tokenization, validation, and parsing of arithmetic expressions.
+`ArithmeticParser` compiles a regex, splits an expression into tokens (numbers, operators, parentheses), validates each token, and reports errors when something illegal shows up.
 
-Class Structure
+## Architecture
 
-Initialization (init): The constructor initializes the ArithmeticParser object. It compiles a regular expression pattern using re.compile, crucial for tokenizing arithmetic expressions.
+```mermaid
+flowchart LR
+  Input["User expression"]
+  Tok["tokenize"]
+  Val["validate_tokens"]
+  Out["Token list or ValueError"]
 
-Tokenization: The tokenize method accepts arithmetic expressions as input and performs tokenization based on the precompiled regular expression pattern. It generates a list of tokens representing numbers, arithmetic operators, and parentheses.
+  Input --> Tok --> Val --> Out
+```
 
-Token Validation: Token validation is handled by the validate_tokens method. This method ensures that each token extracted from the input expression conforms to permissible characters such as digits, arithmetic operators, and parentheses. Any detection of an invalid token results in raising a ValueError.
+## Files
 
-Input Parsing: The parse_input method prompts input from the user for arithmetic expressions. It tokenizes the input expression using tokenize and validates the tokens using validate_tokens. If the tokens are valid, they are printed to the console; otherwise, an error message is displayed.
-Example Usage
+| File | Role |
+|------|------|
+| `milestone-1.py` | Early parser milestone |
+| `milestone2and3.py` | Later milestones |
+| `Welcome_To_Colab.ipynb` | Notebook walkthrough |
 
-An instance of the ArithmeticParser class is created, and the parse_input method is called to demonstrate the code's functionality. Users can input arithmetic expressions, which are then tokenized and validated by the ArithmeticParser.
+## Try it
 
-Error Handling
+```bash
+python3 milestone-1.py
+# or
+python3 milestone2and3.py
+```
 
-The code includes error handling mechanisms to manage potential issues. If an invalid token is identified during token validation, a ValueError is raised along with an appropriate error message for the user's reference.
+Enter expressions like `12 + (3 * 4)` and inspect the token stream.
 
-Conclusion
+## Learning goals
 
-In conclusion, the ArithmeticParser code offers a robust solution for tokenizing and validating arithmetic expressions. It effectively utilizes regular expressions for pattern matching and demonstrates proficient error handling techniques in Python. The code's versatility allows seamless integration into diverse applications requiring arithmetic expression processing functionality, providing users with a dependable tool for arithmetic expression parsing.
+- Regex-based lexing in Python
+- Defensive validation with clear errors
+- Incremental milestones toward a fuller expression pipeline
